@@ -102,6 +102,8 @@ public class DialogueElaborator : MonoBehaviour
     private void EndDialogue()
     {
         m_CurrentMonologueIndex = 0;
+
+        _xEventManager.TriggerEvent("END_DIALOGUE");
     }
 
 

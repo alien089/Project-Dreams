@@ -699,6 +699,7 @@ MonoBehaviour:
   _Sentence: {fileID: 862238552}
   _Name: {fileID: 1402626533}
   _Image: {fileID: 1643306328}
+  _ContinueBtn: {fileID: 1141623534}
   _xEventManager: {fileID: 2043245170}
 --- !u!1 &862238550
 GameObject:

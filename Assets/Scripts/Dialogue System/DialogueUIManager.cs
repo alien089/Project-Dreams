@@ -9,6 +9,7 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _Sentence;
     [SerializeField] private TextMeshProUGUI _Name;
     [SerializeField] private Image _Image;
+    [SerializeField] private Button _ContinueBtn; 
 
     [SerializeField] private EventManager _xEventManager;
 
@@ -18,6 +19,7 @@ public class DialogueUIManager : MonoBehaviour
         _xEventManager.Register("CHANGE_SENTENCE", ChangeSentence);
         _xEventManager.Register("CHANGE_NAME", ChangeName);
         _xEventManager.Register("CHANGE_IMAGE", ChangeImage);
+        _xEventManager.Register("END_DIALOGUE", HideContinue);
     }
 
     public void ChangeSentence(object[] param)
@@ -34,4 +36,8 @@ public class DialogueUIManager : MonoBehaviour
         _Image.sprite = (Sprite)param[0];
     }
 
+    private void HideContinue(object[] param)
+    {
+        _ContinueBtn.gameObject.SetActive(false);
+    }
 }
