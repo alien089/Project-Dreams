@@ -29,6 +29,8 @@ public class DialogueElaborator : MonoBehaviour
     {
         if (!_bIsRunning)
         {
+            _xEventManager.TriggerEvent("START_DIALOGUE");
+
             _bIsRunning = true;
 
             _Dialogue = actualDialogue;
@@ -72,7 +74,17 @@ public class DialogueElaborator : MonoBehaviour
             }
             else
             {
-                EndDialogue();
+                if (_Dialogue.BHasChoices)
+                {
+                    _xEventManager.TriggerEvent("START_CHOICE");
+
+                    m_CurrentMonologueIndex = 0;
+                    _bIsRunning = false;
+                }
+                else
+                {
+                    EndDialogue();
+                }
                 return;
             }
         }
@@ -104,6 +116,8 @@ public class DialogueElaborator : MonoBehaviour
         m_CurrentMonologueIndex = 0;
 
         _xEventManager.TriggerEvent("END_DIALOGUE");
+
+        _bIsRunning = false;
     }
 
 

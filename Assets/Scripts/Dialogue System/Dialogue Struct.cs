@@ -6,9 +6,18 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Dialogue
 {
+    [SerializeField] private PreConditions[] _PreConditions;
+
     [SerializeField] private Monologue[] _DialogueParts;
 
+    [SerializeField] private PostConditions[] PostConditions;
+
+    [SerializeField] private bool _bHasChoices;
+
     public Monologue[] DialogueParts { get => _DialogueParts; }
+    public bool BHasChoices { get => _bHasChoices; }
+    public PreConditions[] PreConditions { get => _PreConditions; }
+    public PostConditions[] PostConditions1 { get => PostConditions; }
 }
 
 [System.Serializable]
