@@ -25,7 +25,7 @@ public class DialogueElaborator : MonoBehaviour
     /// Method used for starting a specified dialogue, need an index based on the dialogue list
     /// </summary>
     /// <param name="actualDialogue"></param>
-    public void StartDialogue(Dialogue actualDialogue)
+    public void StartDialogue(Dialogue actualDialogue, Dialogue defaultDialogue)
     {
         if (!_bIsRunning)
         {
@@ -120,6 +120,16 @@ public class DialogueElaborator : MonoBehaviour
         _bIsRunning = false;
     }
 
+    private bool CheckPreconditions()
+    {
+        bool check = false;
+
+
+
+        return check;
+    }
+
+    #region current
 
     private void ClearCurrent()
     {
@@ -144,4 +154,6 @@ public class DialogueElaborator : MonoBehaviour
         text = _sCurrentText[0];
         sprite = _xCurrentImage[0];
     }
+
+    #endregion
 }
