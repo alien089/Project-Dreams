@@ -74,7 +74,7 @@ public class DialogueElaborator : MonoBehaviour
             }
             else
             {
-                if (_Dialogue.BHasChoices)
+                if (_Dialogue.HasChoices)
                 {
                     _xEventManager.TriggerEvent("START_CHOICE");
 

@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+[System.Serializable()]
+public class Condition : SerializableDictionaryBase<Conditions, bool> { }
+
 
 [System.Serializable]
 public class Dialogue
 {
-    [SerializeField] private PreConditions[] _PreConditions;
+    [SerializeField] private Condition _PreConditions;
 
     [SerializeField] private Monologue[] _DialogueParts;
 
-    [SerializeField] private PostConditions[] PostConditions;
+    [SerializeField] private Condition _PostConditions;
 
-    [SerializeField] private bool _bHasChoices;
+    [SerializeField] private bool _HasChoices;
 
-    public Monologue[] DialogueParts { get => _DialogueParts; }
-    public bool BHasChoices { get => _bHasChoices; }
-    public PreConditions[] PreConditions { get => _PreConditions; }
-    public PostConditions[] PostConditions1 { get => PostConditions; }
+    public Monologue[] DialogueParts { get => _DialogueParts; } 
+    public bool HasChoices { get => _HasChoices; }
+    public Condition PreConditions { get => _PreConditions; }
+    public Condition PostConditions { get => _PostConditions; }
 }
 
 [System.Serializable]

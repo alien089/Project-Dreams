@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   Dialogue:
-    _PreConditions: 00000000
+    _PreConditions:
+      _keys: 01000000
+      _values: 00
     _DialogueParts:
     - _sName: gianni
       _Sentences:
@@ -25,5 +27,7 @@ MonoBehaviour:
       - _sSentence: r egws feW AF
         _sAudio: {fileID: 0}
         _sImage: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-    PostConditions: 00000000
-    _bHasChoices: 0
+    _PostConditions:
+      _keys: 01000000
+      _values: 01
+    _HasChoices: 0
