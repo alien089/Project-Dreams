@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Dialogue1
   m_EditorClassIdentifier: 
   Dialogue:
-    _PreConditions: 00000000
+    _PreConditions:
+      _keys: 0000000001000000
+      _values: 0000
     _DialogueParts:
     - _sName: pippo
       _Sentences:
@@ -28,5 +30,7 @@ MonoBehaviour:
       - _sSentence: fwe abfd s bfd
         _sAudio: {fileID: 0}
         _sImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-    PostConditions: 00000000
-    _bHasChoices: 1
+    _PostConditions:
+      _keys: 
+      _values: 
+    _HasChoices: 0

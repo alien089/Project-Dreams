@@ -539,7 +539,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da08f44531ab0d8438288536f4815198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xDialogue: {fileID: 11400000, guid: 514595ed4161bd64aa06498f8e7170b2, type: 2}
+  _xDialogues:
+  - {fileID: 11400000, guid: 92020741cc64405428102c59856a141e, type: 2}
+  - {fileID: 11400000, guid: dd049444e7e76a54d9e713c3394748d0, type: 2}
+  _xDefaultDialogue: {fileID: 11400000, guid: 514595ed4161bd64aa06498f8e7170b2, type: 2}
   _xDialogueElaborator: {fileID: 1892144670}
 --- !u!1 &594997451
 GameObject:
@@ -593,7 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da08f44531ab0d8438288536f4815198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xDialogue: {fileID: 11400000, guid: 92020741cc64405428102c59856a141e, type: 2}
+  _xDialogues: []
+  _xDefaultDialogue: {fileID: 0}
   _xDialogueElaborator: {fileID: 1892144670}
 --- !u!114 &594997454
 MonoBehaviour:
@@ -1697,7 +1701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da08f44531ab0d8438288536f4815198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xDialogue: {fileID: 11400000, guid: 88564a6c0dd990847930475ff382866e, type: 2}
+  _xDialogues: []
+  _xDefaultDialogue: {fileID: 0}
   _xDialogueElaborator: {fileID: 1892144670}
 --- !u!114 &1443064151
 MonoBehaviour:
@@ -2033,7 +2038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da08f44531ab0d8438288536f4815198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _xDialogue: {fileID: 11400000, guid: dd049444e7e76a54d9e713c3394748d0, type: 2}
+  _xDialogues: []
+  _xDefaultDialogue: {fileID: 0}
   _xDialogueElaborator: {fileID: 1892144670}
 --- !u!114 &1731997493
 MonoBehaviour:

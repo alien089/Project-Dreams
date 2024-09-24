@@ -7,12 +7,16 @@ public class Condition : SerializableDictionaryBase<Conditions, bool> { }
 [System.Serializable]
 public class Dialogue
 {
+    //Conditions needed to show this dialogue
     [SerializeField] private Condition _PreConditions;
 
+    //List of monologues
     [SerializeField] private Monologue[] _DialogueParts;
 
+    //Conditions unlocked from this dialogue
     [SerializeField] private Condition _PostConditions;
 
+    //Boolean needed to show multiple choices after the dialogue end
     [SerializeField] private bool _HasChoices;
 
     public Monologue[] DialogueParts { get => _DialogueParts; } 

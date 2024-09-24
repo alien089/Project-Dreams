@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class DialogueElaborator : MonoBehaviour
     private Dialogue _Dialogue;
     private List<string> _sCurrentText;
     private List<Sprite> _xCurrentImage;
-    private int m_CurrentMonologueIndex;
+    private int _CurrentMonologueIndex;
 
     // Use this for initialization
     private void Start()
@@ -25,7 +26,7 @@ public class DialogueElaborator : MonoBehaviour
     /// Method used for starting a specified dialogue, need an index based on the dialogue list
     /// </summary>
     /// <param name="actualDialogue"></param>
-    public void StartDialogue(Dialogue actualDialogue, Dialogue defaultDialogue)
+    public void StartDialogue(List<Dialogue> dialogueList, Dialogue defaultDialogue)
     {
         if (!_bIsRunning)
         {
@@ -33,7 +34,17 @@ public class DialogueElaborator : MonoBehaviour
 
             _bIsRunning = true;
 
-            _Dialogue = actualDialogue;
+            for(int i = 0; i < dialogueList.Count; i++)
+            {
+                if (CheckPreconditions(dialogueList[i]))
+                {
+                    _Dialogue = dialogueList[i];
+                    break;
+                }
+            }
+
+            if (_Dialogue == null)
+                _Dialogue = defaultDialogue;
 
             StartMonologue();
         }
@@ -44,13 +55,13 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     public void StartMonologue()
     {
-        _xEventManager.TriggerEvent("CHANGE_NAME", _Dialogue.DialogueParts[m_CurrentMonologueIndex].SName);
+        _xEventManager.TriggerEvent("CHANGE_NAME", _Dialogue.DialogueParts[_CurrentMonologueIndex].SName);
 
         ClearCurrent();
 
         AddToCurrent(null, null);
 
-        foreach (Sentence sentence in _Dialogue.DialogueParts[m_CurrentMonologueIndex].Sentences)
+        foreach (Sentence sentence in _Dialogue.DialogueParts[_CurrentMonologueIndex].Sentences)
         {
             AddToCurrent(sentence.SSentence, sentence.SImage);
         }
@@ -59,17 +70,19 @@ public class DialogueElaborator : MonoBehaviour
     }
 
     /// <summary>
-    /// SHow the first sentence available in the list of CurrentText
+    /// Show the first sentence available in the list of CurrentText
     /// </summary>
     public void DisplayNextSentence()
     {
+        //Remove the previous sentence from current
         RemoveFromCurrent();
 
         if (_sCurrentText.Count == 0)
         {
-            if (m_CurrentMonologueIndex < _Dialogue.DialogueParts.Length - 1)
+            //If the list is empty, it means that is needed to go on the next monologue or that the dialogue is ended
+            if (_CurrentMonologueIndex < _Dialogue.DialogueParts.Length - 1)
             {
-                m_CurrentMonologueIndex++;
+                _CurrentMonologueIndex++;
                 StartMonologue();
             }
             else
@@ -78,7 +91,7 @@ public class DialogueElaborator : MonoBehaviour
                 {
                     _xEventManager.TriggerEvent("START_CHOICE");
 
-                    m_CurrentMonologueIndex = 0;
+                    _CurrentMonologueIndex = 0;
                     _bIsRunning = false;
                 }
                 else
@@ -113,18 +126,54 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     private void EndDialogue()
     {
-        m_CurrentMonologueIndex = 0;
+        _CurrentMonologueIndex = 0;
+        _Dialogue = null;
 
         _xEventManager.TriggerEvent("END_DIALOGUE");
 
         _bIsRunning = false;
     }
 
-    private bool CheckPreconditions()
+    /// <summary>
+    /// Checker for the preconditions, if is satisfied will be used the actual dialogue, else the default
+    /// </summary>
+    /// <param name="dialogue"></param>
+    /// <returns></returns>
+    private bool CheckPreconditions(Dialogue dialogue)
     {
-        bool check = false;
+        bool check = true;
 
+        bool[] preconditionsCheck = new bool[dialogue.PreConditions.Count];
 
+        //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
+        ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
+
+        foreach (KeyValuePair<Conditions, bool> pair in dialogue.PreConditions)
+        {
+            if (actualConditions[0].conditions.TryGetValue(pair.Key, out bool value))
+            {
+                if (value == pair.Value)
+                {
+                    for (int i = 0; i < preconditionsCheck.Length; i++)
+                    {
+                        if (preconditionsCheck[i] == false)
+                        {
+                            preconditionsCheck[i] = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < preconditionsCheck.Length; i++)
+        {
+            if (preconditionsCheck[i] == false)
+            {
+                check = false;
+                break;
+            }
+        }
 
         return check;
     }

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac5ce7b18e641d41b83188e6070fd90, type: 3}
   m_Name: ActualCondition
   m_EditorClassIdentifier: 
-  conditions: 000000000000000000000000
+  conditions:
+    _keys: 0000000001000000
+    _values: 0001
