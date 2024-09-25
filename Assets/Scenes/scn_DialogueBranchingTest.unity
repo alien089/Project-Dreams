@@ -541,7 +541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xDialogues:
   - {fileID: 11400000, guid: 92020741cc64405428102c59856a141e, type: 2}
-  - {fileID: 11400000, guid: dd049444e7e76a54d9e713c3394748d0, type: 2}
   _xDefaultDialogue: {fileID: 11400000, guid: 514595ed4161bd64aa06498f8e7170b2, type: 2}
   _xDialogueElaborator: {fileID: 1892144670}
 --- !u!1 &594997451

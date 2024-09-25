@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -23,9 +24,10 @@ public class DialogueElaborator : MonoBehaviour
     }
 
     /// <summary>
-    /// Method used for starting a specified dialogue, need an index based on the dialogue list
+    /// Method used for starting a specified dialogue, need a list of dialogues with preconditions and a default dialogue
     /// </summary>
-    /// <param name="actualDialogue"></param>
+    /// <param name="dialogueList"></param>
+    /// <param name="defaultDialogue"></param>
     public void StartDialogue(List<Dialogue> dialogueList, Dialogue defaultDialogue)
     {
         if (!_bIsRunning)
@@ -34,6 +36,7 @@ public class DialogueElaborator : MonoBehaviour
 
             _bIsRunning = true;
 
+            //checking which dialogue from the list is the one who respects the preconditions
             for(int i = 0; i < dialogueList.Count; i++)
             {
                 if (CheckPreconditions(dialogueList[i]))
@@ -126,12 +129,29 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     private void EndDialogue()
     {
+        ApplyPostCondition();
+
         _CurrentMonologueIndex = 0;
         _Dialogue = null;
 
         _xEventManager.TriggerEvent("END_DIALOGUE");
 
+
         _bIsRunning = false;
+    }
+
+    private void ApplyPostCondition()
+    {
+        //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
+        ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
+
+        foreach (KeyValuePair<Conditions, int> pair in _Dialogue.PostConditions)
+        {
+            if (actualConditions[0].conditions.ContainsKey(pair.Key)) 
+                actualConditions[0].conditions[pair.Key] = pair.Value;
+            else
+                actualConditions[0].conditions.Add(pair.Key, pair.Value);
+        }
     }
 
     /// <summary>
@@ -148,9 +168,9 @@ public class DialogueElaborator : MonoBehaviour
         //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
         ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
 
-        foreach (KeyValuePair<Conditions, bool> pair in dialogue.PreConditions)
+        foreach (KeyValuePair<Conditions, int> pair in dialogue.PreConditions)
         {
-            if (actualConditions[0].conditions.TryGetValue(pair.Key, out bool value))
+            if (actualConditions[0].conditions.TryGetValue(pair.Key, out int value))
             {
                 if (value == pair.Value)
                 {

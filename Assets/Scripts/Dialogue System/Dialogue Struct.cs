@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable()]
-public class Condition : SerializableDictionaryBase<Conditions, bool> { }
+public class Condition : SerializableDictionaryBase<Conditions, int> { }
 
 
 [System.Serializable]
