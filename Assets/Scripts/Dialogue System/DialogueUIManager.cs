@@ -9,7 +9,8 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _Sentence;
     [SerializeField] private Image _TextBox;
     [SerializeField] private TextMeshProUGUI _Name;
-    [SerializeField] private Image _Image;
+    [SerializeField] private GameObject ListOfCharacters;
+    private Image[] _Image = new Image[6];
     [SerializeField] private Button _ContinueBtn; 
     [SerializeField] private GameObject _ChoicesBox;
 
@@ -26,6 +27,11 @@ public class DialogueUIManager : MonoBehaviour
         _xEventManager.Register("START_CHOICE", ShowChoices);
 
         HideDialogue(null);
+
+        for(int i = 0; i < _Image.Length; i++)
+        {
+            _Image[i] = ListOfCharacters.transform.GetChild(i).gameObject.GetComponent<Image>();
+        }
     }
 
     public void ChangeSentence(object[] param)
@@ -39,7 +45,19 @@ public class DialogueUIManager : MonoBehaviour
     
     public void ChangeImage(object[] param)
     {
-        _Image.sprite = (Sprite)param[0];
+        List<Sprite[]> list = (List<Sprite[]>)param[0];
+        Sprite[] images = list[0];
+
+        for (int i = 0; i < _Image.Length; i++)
+        {
+            if (images[i] != null)
+            {
+                _Image[i].gameObject.SetActive(true);
+                _Image[i].sprite = images[i];
+            }
+            else
+                _Image[i].gameObject.SetActive(false);
+        }
     }
     
     private void HideDialogue(object[] param)
@@ -48,7 +66,7 @@ public class DialogueUIManager : MonoBehaviour
         _TextBox.gameObject.SetActive(false);
         _Sentence.text = "";
         _Name.text = "";
-        _Image.gameObject.SetActive(false);
+        ListOfCharacters.gameObject.SetActive(false);
         _ChoicesBox.SetActive(false);
     }    
     
@@ -58,7 +76,7 @@ public class DialogueUIManager : MonoBehaviour
         _TextBox.gameObject.SetActive(true);
         _Sentence.text = "";
         _Name.text = "";
-        _Image.gameObject.SetActive(true);
+        ListOfCharacters.gameObject.SetActive(true);
     }
 
     private void ShowChoices(object[] param)

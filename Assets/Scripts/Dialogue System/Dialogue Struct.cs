@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [System.Serializable()]
@@ -35,18 +36,19 @@ public class Monologue
     public Sentence[] Sentences { get => _Sentences; }
 }
 
+
 [System.Serializable]
 public class Sentence
 {
     [SerializeField] private string _sSentence;
     [SerializeField] private AudioClip _sAudio;
-    [SerializeField] private Sprite _sImage;
+    [SerializeField] public Sprite[] _sImage = new Sprite[6];
 
     public string SSentence { get => _sSentence;}
     public AudioClip SAudio { get => _sAudio;}
-    public Sprite SImage { get => _sImage;}
+    public Sprite[] SImage { get => _sImage;}
 
-    public Sentence(string sSentence, Sprite sImage)
+    public Sentence(string sSentence, Sprite[] sImage)
     {
         _sSentence = sSentence;
         _sImage = sImage;

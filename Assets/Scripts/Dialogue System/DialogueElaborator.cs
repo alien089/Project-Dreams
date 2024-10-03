@@ -13,14 +13,14 @@ public class DialogueElaborator : MonoBehaviour
 
     private Dialogue _Dialogue;
     private List<string> _sCurrentText;
-    private List<Sprite> _xCurrentImage;
+    private List<Sprite[]> _xCurrentImage;
     private int _CurrentMonologueIndex;
 
     // Use this for initialization
     private void Start()
     {
         _sCurrentText = new List<string>();
-        _xCurrentImage = new List<Sprite>();
+        _xCurrentImage = new List<Sprite[]>();
     }
 
     /// <summary>
@@ -116,12 +116,14 @@ public class DialogueElaborator : MonoBehaviour
     private void TypeSentence()
     {
         string sentence = "";
-        Sprite image = null;
+        Sprite[] image = null;
         GetFromCurrent(out sentence, out image);
+        List<Sprite[]> list = new List<Sprite[]>();
+        list.Add(image);
 
         _xEventManager.TriggerEvent("CHANGE_SENTENCE", "");
         _xEventManager.TriggerEvent("CHANGE_SENTENCE", sentence);
-        _xEventManager.TriggerEvent("CHANGE_IMAGE", image);
+        _xEventManager.TriggerEvent("CHANGE_IMAGE", list);
     }
 
     /// <summary>
@@ -140,6 +142,9 @@ public class DialogueElaborator : MonoBehaviour
         _bIsRunning = false;
     }
 
+    /// <summary>
+    /// Method for application of the dialogue's postconditions in the actual player's condition list
+    /// </summary>
     private void ApplyPostCondition()
     {
         //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
@@ -206,7 +211,7 @@ public class DialogueElaborator : MonoBehaviour
         _xCurrentImage.Clear();
     }
 
-    private void AddToCurrent(string sentence, Sprite image)
+    private void AddToCurrent(string sentence, Sprite[] image)
     {
         _sCurrentText.Add(sentence);
         _xCurrentImage.Add(image);
@@ -218,7 +223,7 @@ public class DialogueElaborator : MonoBehaviour
         _xCurrentImage.RemoveAt(0);
     }
 
-    private void GetFromCurrent(out string text, out Sprite sprite)
+    private void GetFromCurrent(out string text, out Sprite[] sprite)
     {
         text = _sCurrentText[0];
         sprite = _xCurrentImage[0];
