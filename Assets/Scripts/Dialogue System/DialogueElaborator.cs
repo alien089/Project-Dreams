@@ -83,7 +83,7 @@ public class DialogueElaborator : MonoBehaviour
         if (_sCurrentText.Count == 0)
         {
             //If the list is empty, it means that is needed to go on the next monologue or that the dialogue is ended
-            if (_CurrentMonologueIndex < _Dialogue.DialogueParts.Length - 1)
+            if (_CurrentMonologueIndex < _Dialogue.DialogueParts.Count - 1)
             {
                 _CurrentMonologueIndex++;
                 StartMonologue();
@@ -162,18 +162,18 @@ public class DialogueElaborator : MonoBehaviour
     /// <summary>
     /// Checker for the preconditions, if is satisfied will be used the actual dialogue, else the default
     /// </summary>
-    /// <param name="dialogue"></param>
+    /// <param name="xDialogue"></param>
     /// <returns></returns>
-    private bool CheckPreconditions(Dialogue dialogue)
+    private bool CheckPreconditions(Dialogue xDialogue)
     {
         bool check = true;
 
-        bool[] preconditionsCheck = new bool[dialogue.PreConditions.Count];
+        bool[] preconditionsCheck = new bool[xDialogue.PreConditions.Count];
 
         //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
         ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
 
-        foreach (KeyValuePair<Conditions, int> pair in dialogue.PreConditions)
+        foreach (KeyValuePair<Conditions, int> pair in xDialogue.PreConditions)
         {
             if (actualConditions[0].conditions.TryGetValue(pair.Key, out int value))
             {

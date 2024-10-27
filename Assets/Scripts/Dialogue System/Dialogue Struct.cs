@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable()]
@@ -11,8 +12,9 @@ public class Dialogue
     //Conditions needed to show this dialogue
     [SerializeField] private Condition _PreConditions;
 
+    [SerializeField] private TextAsset _DialogueCSV;
     //List of monologues
-    [SerializeField] private Monologue[] _DialogueParts;
+    [SerializeField] private List<Monologue> _DialogueParts;
 
     //Conditions unlocked from this dialogue
     [SerializeField] private Condition _PostConditions;
@@ -20,20 +22,27 @@ public class Dialogue
     //Boolean needed to show multiple choices after the dialogue end
     [SerializeField] private bool _HasChoices;
 
-    public Monologue[] DialogueParts { get => _DialogueParts; } 
+    public List<Monologue> DialogueParts { get => _DialogueParts; } 
     public bool HasChoices { get => _HasChoices; }
     public Condition PreConditions { get => _PreConditions; }
     public Condition PostConditions { get => _PostConditions; }
+    public TextAsset DialogueCSV { get => _DialogueCSV; set => _DialogueCSV = value; }
 }
 
 [System.Serializable]
 public class Monologue
 {
     [SerializeField] private string _sName;
-    [SerializeField] private Sentence[] _Sentences;
+    [SerializeField] private List<Sentence> _Sentences;
 
     public string SName { get => _sName; }
-    public Sentence[] Sentences { get => _Sentences; }
+    public List<Sentence> Sentences { get => _Sentences; }
+
+    public Monologue(string sName, List<Sentence> sentences)
+    {
+        _sName = sName;
+        _Sentences = sentences;
+    }
 }
 
 
