@@ -13,7 +13,7 @@ public class DialogueSO : ScriptableObject
 
     private void OnValidate()
     {
-        TextElabrotation();
+        if (Dialogue.DialogueParts.Count == 0) TextElabrotation();
 
         for (int i = 0; i < Dialogue.DialogueParts.Count; i++)
         {
@@ -85,8 +85,9 @@ public class DialogueSO : ScriptableObject
             Sentence strSentence = new Sentence(ListLines[i].Sentence, TextToSprite(ListLines[i].PG));
             strSentences.Add(strSentence);
 
-            while (j < ListLines.Count && ListLines[j].PGName == "")
+            while (j < ListLines.Count)
             {
+                if (ListLines[j].PGName != " ") break;
                 strSentence = new Sentence(ListLines[j].Sentence, TextToSprite(ListLines[j].PG));
                 strSentences.Add(strSentence);
                 j++;
