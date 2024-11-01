@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -102,8 +103,25 @@ public class DialogueSO : ScriptableObject
 
     private Sprite[] TextToSprite(string[] strSprite)
     {
-        Sprite[] sprite = Resources.LoadAll<Sprite>("img/characters/immagine");
-        return sprite;
+        Sprite[] xSprite = new Sprite[6];
+
+        for (int i = 0; i < strSprite.Length; i++)
+        {
+            if (strSprite[i] == " ") continue;
+
+            string strSpritePath = "2D/CharacterSprites/";
+
+            string[] strSpriteParts = strSprite[i].Split('-'); //separa stringa sprite in nome + emozione
+            strSpritePath += strSpriteParts[0]; //prendo solo nome
+
+            strSpritePath += "/S_"; //prepara nome file
+            strSpritePath += strSprite[i];
+
+            Sprite sprite = Resources.Load<Sprite>(strSpritePath);  //load chiede /.../nome file
+
+            xSprite[i] = sprite;
+        }
+        return xSprite;
     }
 
     private struct Line
