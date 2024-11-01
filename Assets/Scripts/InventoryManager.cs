@@ -33,6 +33,8 @@ public class InventoryManager : MonoBehaviour
             Destroy(child.gameObject); // Usa Destroy per rimuovere gli oggetti UI precedenti
         }
 
+        //setta numero fisso griglia per pagina, crei (es) 16 gameobkect vuoti e li riempi e non istanzi, cambio pagina pulisco e ri riempio.
+
         // Aggiungi nuovi oggetti alla griglia
         foreach (InventoryItem item in items)
         {

@@ -8,7 +8,7 @@ public class CollectibleItem : MonoBehaviour
 
     void OnMouseDown()
     {
-        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>(); //attach to singleton megamanager gamemanager.Inventory
         inventoryManager.AddItem(item);
         Destroy(gameObject); // Rimuovi l'oggetto dalla scena dopo il clic
     }
