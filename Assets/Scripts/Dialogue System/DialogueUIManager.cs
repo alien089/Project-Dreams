@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class DialogueUIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _MenuBackground;
     [SerializeField] private TextMeshProUGUI _Sentence;
     [SerializeField] private Image _TextBox;
+    [SerializeField] private GameObject _NameTextBox;
     [SerializeField] private TextMeshProUGUI _Name;
     [SerializeField] private GameObject ListOfCharacters;
     private Image[] _Image = new Image[6];
@@ -64,7 +66,9 @@ public class DialogueUIManager : MonoBehaviour
     {
         _ContinueBtn.gameObject.SetActive(false);
         _TextBox.gameObject.SetActive(false);
+        _MenuBackground.gameObject.SetActive(false);
         _Sentence.text = "";
+        _NameTextBox.gameObject.SetActive(false);
         _Name.text = "";
         ListOfCharacters.gameObject.SetActive(false);
         _ChoicesBox.SetActive(false);
@@ -74,7 +78,9 @@ public class DialogueUIManager : MonoBehaviour
     {
         _ContinueBtn.gameObject.SetActive(true);
         _TextBox.gameObject.SetActive(true);
+        _MenuBackground.gameObject.SetActive(true);
         _Sentence.text = "";
+        _NameTextBox.gameObject.SetActive(true);
         _Name.text = "";
         ListOfCharacters.gameObject.SetActive(true);
     }

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303b5f35688ab40459c560b5d4b34fd3, type: 3}
+  m_Name: Scena Cortile
+  m_EditorClassIdentifier: 
+  Dialogue:
+    _PreConditions:
+      _keys: 
+      _values: 
+    _DialogueCSV: {fileID: 4900000, guid: 731d04d117ae26f41b5e971ef60b41f0, type: 3}
+    _DialogueParts:
+    - _sName: Agilulfo
+      _Sentences:
+      - _sSentence: "Buongiorno bella donzella cosa fa sveglia qui fuori?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: c114097989000334aa25cd8e435e6022, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: cf4a39c7120951d43a9c3bc633898d5a, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 00c8fdf925e768543b5b81e848163246, type: 3}
+    - _sName: Mestrella
+      _Sentences:
+      - _sSentence: "Aggio appena sfornato il pane!\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: c114097989000334aa25cd8e435e6022, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: cf4a39c7120951d43a9c3bc633898d5a, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 00c8fdf925e768543b5b81e848163246, type: 3}
+      - _sSentence: "Sei cieco per caso?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: c114097989000334aa25cd8e435e6022, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: cf4a39c7120951d43a9c3bc633898d5a, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 00c8fdf925e768543b5b81e848163246, type: 3}
+    - _sName: Clido
+      _Sentences:
+      - _sSentence: Ah i bei tempi andati!
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: c114097989000334aa25cd8e435e6022, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: cf4a39c7120951d43a9c3bc633898d5a, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 00c8fdf925e768543b5b81e848163246, type: 3}
+    _PostConditions:
+      _keys: 
+      _values: 
+    _HasChoices: 0

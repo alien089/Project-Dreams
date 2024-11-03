@@ -117,6 +117,7 @@ public class DialogueSO : ScriptableObject
             strSpritePath += "/S_"; //prepara nome file
             strSpritePath += strSprite[i];
 
+
             Sprite sprite = Resources.Load<Sprite>(strSpritePath);  //load chiede /.../nome file
 
             xSprite[i] = sprite;
