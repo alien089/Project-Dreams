@@ -109,7 +109,7 @@ public class DialogueSO : ScriptableObject
         {
             if (strSprite[i] == " ") continue;
 
-            string strSpritePath = "2D/CharacterSprites/";
+            string strSpritePath = "2D/Character Sprites/";
 
             string[] strSpriteParts = strSprite[i].Split('-'); //separa stringa sprite in nome + emozione
             strSpritePath += strSpriteParts[0]; //prendo solo nome

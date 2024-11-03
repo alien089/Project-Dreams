@@ -18,37 +18,37 @@ MonoBehaviour:
       _values: 
     _DialogueCSV: {fileID: 4900000, guid: 1a629671cb3f19843bc3316a41b7f118, type: 3}
     _DialogueParts:
-    - _sName: bakone
+    - _sName: Bakone
       _Sentences:
-      - _sSentence: "buongiorno\r"
+      - _sSentence: "buongiorno Medico lo vuoi un croissant?\r"
         _sAudio: {fileID: 0}
         _sImage:
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
         - {fileID: 0}
         - {fileID: 0}
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
         - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-    - _sName: bambina
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+    - _sName: Ike
       _Sentences:
-      - _sSentence: "al diavolo\r"
+      - _sSentence: "al diavolo! non mi parlare.\r"
         _sAudio: {fileID: 0}
         _sImage:
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
         - {fileID: 0}
         - {fileID: 0}
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
         - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-      - _sSentence: buongiorno
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+      - _sSentence: vecchio baccucco infame, per te solo le lame.
         _sAudio: {fileID: 0}
         _sImage:
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
         - {fileID: 0}
         - {fileID: 0}
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
         - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: 21300000, guid: 4f1b0b1e2d9b05347ae99efec9ec1aa3, type: 3}
     _PostConditions:
       _keys: 0200000000000000
       _values: 0300000001000000
