@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 1197218283}
   - component: {fileID: 1197218282}
   - component: {fileID: 1197218286}
+  - component: {fileID: 1197218287}
   m_Layer: 0
   m_Name: ItemExample
   m_TagString: Untagged
@@ -717,7 +718,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -782,7 +783,7 @@ Transform:
   m_GameObject: {fileID: 1197218281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 867, y: 277, z: 290}
+  m_LocalPosition: {x: 878, y: 326, z: -0}
   m_LocalScale: {x: 250, y: 100, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -800,6 +801,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43230812f0b6e7c45ab7cd4366230eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1197218287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197218281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1259408329
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +965,6 @@ GameObject:
   - component: {fileID: 1293228851}
   - component: {fileID: 1293228850}
   - component: {fileID: 1293228849}
-  - component: {fileID: 1293228848}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -955,33 +972,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!54 &1293228848
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293228847}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1293228849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,7 +1225,7 @@ Transform:
   m_GameObject: {fileID: 1893095382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 509, y: 241, z: -10}
+  m_LocalPosition: {x: 557, y: 274, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

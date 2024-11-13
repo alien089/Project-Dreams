@@ -6,7 +6,7 @@ public class CollectibleItem : MonoBehaviour
 {
     public InventoryItem item; // L'oggetto da aggiungere all'inventario
 
-    void OnMouseDown()
+    void OnClick()
     {
         InventoryManager inventoryManager = FindObjectOfType<InventoryManager>(); //attach to singleton megamanager gamemanager.Inventory
         inventoryManager.AddItem(item);
