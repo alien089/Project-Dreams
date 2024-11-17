@@ -1,6 +1,0 @@
-_Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _Bakoné_Bla bla bla
-_Medico-Neutro_Riccone-Triste_ _ _Protagonista-Neutro_ _ _Bla bla bla 2
-_Riccone-Triste_Medico-Neutro_ _Protagonista-Neutro_ _ _ _Bla bla bla 3
-_Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _ _Bla bla bla
-_Medico-Neutro_Riccone-Triste_ _ _Protagonista-Neutro_ _ _Bla bla bla 2
-_Riccone-Triste_Medico-Neutro_ _Protagonista-Neutro_ _ _ _Bla bla bla 3
