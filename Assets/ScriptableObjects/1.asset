@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue:
     _PreConditions:
-      _keys: 
-      _values: 
+      _keys: 0000000001000000
+      _values: 0200000000000000
     _DialogueCSV: {fileID: 4900000, guid: 1a629671cb3f19843bc3316a41b7f118, type: 3}
     _DialogueParts:
     - _sName: Bakone
@@ -52,4 +52,5 @@ MonoBehaviour:
     _PostConditions:
       _keys: 0200000000000000
       _values: 0300000001000000
-    _HasChoices: 0
+    dialogueChoices: {fileID: 0}
+  hasChoices: 0

@@ -592,3 +592,65 @@ namespace com.spacepuppyeditor.Collections
     }
 }
 
+// Questo attributo personalizzato permette di specificare una condizione per mostrare/nascondere una variabile
+public class ConditionalHideAttribute : PropertyAttribute
+{
+    public string ConditionField; // Nome del campo booleano che determinerà la visibilità della variabile
+
+    // Costruttore che accetta il nome del campo di condizione come parametro
+    public ConditionalHideAttribute(string conditionField)
+    {
+        ConditionField = conditionField;
+    }
+}
+
+// Personalizzazione dell'editor per gestire il nostro attributo ConditionalHideAttribute
+[CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
+public class ConditionalHideDrawer : PropertyDrawer
+{
+    // Metodo principale per disegnare l'interfaccia della proprietà nell'Inspector
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        // Ottiene l'istanza dell'attributo personalizzato
+        ConditionalHideAttribute hideAttribute = (ConditionalHideAttribute)attribute;
+
+        // Trova il campo di condizione specificato dall'attributo
+        SerializedProperty conditionProperty = property.serializedObject.FindProperty(hideAttribute.ConditionField);
+
+        // Se il campo di condizione esiste e il suo valore è true, disegna normalmente la proprietà
+        if (conditionProperty != null && conditionProperty.boolValue)
+        {
+            EditorGUI.PropertyField(position, property, label, true);
+        }
+        // Altrimenti, non disegna nulla (la proprietà è nascosta)
+        
+        if (conditionProperty == null)
+        {
+            Debug.LogError($"Field '{hideAttribute.ConditionField}' not found in {property.serializedObject.targetObject.GetType().Name}.");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Field '{hideAttribute.ConditionField}' found. Value: {conditionProperty.boolValue}");
+        }
+    }
+
+    // Determina l'altezza della proprietà (utile per nascondere completamente la riga nell'Inspector)
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    {
+        // Ottiene l'istanza dell'attributo personalizzato
+        ConditionalHideAttribute hideAttribute = (ConditionalHideAttribute)attribute;
+
+        // Trova il campo di condizione specificato
+        SerializedProperty conditionProperty = property.serializedObject.FindProperty(hideAttribute.ConditionField);
+
+        // Se il campo di condizione esiste e il suo valore è true, restituisce l'altezza normale
+        if (conditionProperty != null && conditionProperty.boolValue)
+        {
+            return EditorGUI.GetPropertyHeight(property, label, true);
+        }
+
+        // Altrimenti, restituisce 0 per nascondere la riga
+        return 0f;
+    }
+}

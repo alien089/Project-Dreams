@@ -16,6 +16,7 @@ MonoBehaviour:
     _PreConditions:
       _keys: 
       _values: 
+    _DialogueCSV: {fileID: 0}
     _DialogueParts:
     - _sName: egr ws
       _Sentences:
@@ -42,4 +43,5 @@ MonoBehaviour:
     _PostConditions:
       _keys: 
       _values: 
-    _HasChoices: 0
+    dialogueChoices: {fileID: 0}
+  hasChoices: 0

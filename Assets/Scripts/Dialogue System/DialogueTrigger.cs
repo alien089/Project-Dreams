@@ -7,6 +7,9 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private List<DialogueSO> _xDialogues;
     [SerializeField] private DialogueSO _xDefaultDialogue;
     [SerializeField] private DialogueElaborator _xDialogueElaborator;
+
+    public List<DialogueSO> XDialogues { get => _xDialogues; set => _xDialogues = value; }
+    public DialogueSO XDefaultDialogue { get => _xDefaultDialogue; set => _xDefaultDialogue = value; }
     // Start is called before the first frame update
 
     public void StartDialogue()

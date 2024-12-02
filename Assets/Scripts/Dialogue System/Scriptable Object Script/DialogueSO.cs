@@ -11,11 +11,14 @@ using UnityEngine;
 public class DialogueSO : ScriptableObject
 {
     public Dialogue Dialogue;
+    public bool hasChoices = false;
 
     private void OnValidate()
     {
         if (Dialogue.DialogueParts.Count == 0) TextElabrotation();
-
+        
+        Dialogue.HasChoices = hasChoices;
+        
         for (int i = 0; i < Dialogue.DialogueParts.Count; i++)
         {
             for(int j = 0; j < Dialogue.DialogueParts[i].Sentences.Count; j++)

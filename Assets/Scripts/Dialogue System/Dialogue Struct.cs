@@ -20,10 +20,12 @@ public class Dialogue
     [SerializeField] private Condition _PostConditions;
 
     //Boolean needed to show multiple choices after the dialogue end
-    [SerializeField] private bool _HasChoices;
+    private bool _HasChoices;
+    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoices;
+
 
     public List<Monologue> DialogueParts { get => _DialogueParts; } 
-    public bool HasChoices { get => _HasChoices; }
+    public bool HasChoices { get => _HasChoices;  set => _HasChoices = value; }
     public Condition PreConditions { get => _PreConditions; }
     public Condition PostConditions { get => _PostConditions; }
     public TextAsset DialogueCSV { get => _DialogueCSV; set => _DialogueCSV = value; }

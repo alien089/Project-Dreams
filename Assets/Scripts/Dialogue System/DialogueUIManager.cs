@@ -11,8 +11,10 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] private Image _TextBox;
     [SerializeField] private GameObject _NameTextBox;
     [SerializeField] private TextMeshProUGUI _Name;
-    [SerializeField] private GameObject ListOfCharacters;
+    [SerializeField] private GameObject _ListOfCharacters;
     private Image[] _Image = new Image[6];
+    [SerializeField] private GameObject _ChoiceBox;
+    private DialogueTrigger[] _ChoiceTrigger = new DialogueTrigger[3];
     [SerializeField] private Button _ContinueBtn; 
     [SerializeField] private GameObject _ChoicesBox;
 
@@ -32,7 +34,11 @@ public class DialogueUIManager : MonoBehaviour
 
         for(int i = 0; i < _Image.Length; i++)
         {
-            _Image[i] = ListOfCharacters.transform.GetChild(i).gameObject.GetComponent<Image>();
+            _Image[i] = _ListOfCharacters.transform.GetChild(i).gameObject.GetComponent<Image>();
+        }
+        for(int i = 0; i < _ChoiceTrigger.Length; i++)
+        {
+            _ChoiceTrigger[i] = _ChoiceBox.transform.GetChild(i).gameObject.GetComponent<DialogueTrigger>();
         }
     }
 
@@ -61,6 +67,14 @@ public class DialogueUIManager : MonoBehaviour
                 _Image[i].gameObject.SetActive(false);
         }
     }
+
+    private void FillChoiceBox(object[] param)
+    {
+        for(int i = 0; i < _ChoiceTrigger.Length; i++)
+        {
+            //_ChoiceTrigger[i].XDialogues
+        }
+    }
     
     private void HideDialogue(object[] param)
     {
@@ -70,7 +84,7 @@ public class DialogueUIManager : MonoBehaviour
         _Sentence.text = "";
         _NameTextBox.gameObject.SetActive(false);
         _Name.text = "";
-        ListOfCharacters.gameObject.SetActive(false);
+        _ListOfCharacters.gameObject.SetActive(false);
         _ChoicesBox.SetActive(false);
     }    
     
@@ -82,12 +96,17 @@ public class DialogueUIManager : MonoBehaviour
         _Sentence.text = "";
         _NameTextBox.gameObject.SetActive(true);
         _Name.text = "";
-        ListOfCharacters.gameObject.SetActive(true);
+        _ListOfCharacters.gameObject.SetActive(true);
     }
 
     private void ShowChoices(object[] param)
     {
         _ChoicesBox.SetActive(true);
+    }
+
+    private void CreateCharacter(object[] param)
+    {
+        
     }
 
     public void HideChoices()
