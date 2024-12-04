@@ -21,11 +21,12 @@ public class Dialogue
 
     //Boolean needed to show multiple choices after the dialogue end
     private bool _HasChoices;
-    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoices;
+    private DialogueSO[] _DialogueChoices = new DialogueSO[3];
 
 
     public List<Monologue> DialogueParts { get => _DialogueParts; } 
     public bool HasChoices { get => _HasChoices;  set => _HasChoices = value; }
+    public DialogueSO[] DialogueChoices { get => _DialogueChoices;  set => _DialogueChoices = value; }
     public Condition PreConditions { get => _PreConditions; }
     public Condition PostConditions { get => _PostConditions; }
     public TextAsset DialogueCSV { get => _DialogueCSV; set => _DialogueCSV = value; }

@@ -12,12 +12,19 @@ public class DialogueSO : ScriptableObject
 {
     public Dialogue Dialogue;
     public bool hasChoices = false;
+    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceA;
+    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceB;
+    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceC;
 
     private void OnValidate()
     {
         if (Dialogue.DialogueParts.Count == 0) TextElabrotation();
         
         Dialogue.HasChoices = hasChoices;
+
+        Dialogue.DialogueChoices[0] = dialogueChoiceA;
+        Dialogue.DialogueChoices[1] = dialogueChoiceB;
+        Dialogue.DialogueChoices[2] = dialogueChoiceC;
         
         for (int i = 0; i < Dialogue.DialogueParts.Count; i++)
         {
