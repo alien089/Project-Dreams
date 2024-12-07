@@ -92,10 +92,10 @@ public class DialogueElaborator : MonoBehaviour
             {
                 if (_Dialogue.HasChoices)
                 {
-                    _xEventManager.TriggerEvent("START_CHOICE");
-
-                    _CurrentMonologueIndex = 0;
-                    _bIsRunning = false;
+                    System.Collections.Generic.List<DialogueSO[]> list = new List<DialogueSO[]>();
+                    list.Add(_Dialogue.DialogueChoices);
+                    EndDialogue();
+                    _xEventManager.TriggerEvent("START_CHOICE", list);
                 }
                 else
                 {

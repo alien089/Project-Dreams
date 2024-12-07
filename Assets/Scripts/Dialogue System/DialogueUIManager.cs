@@ -13,10 +13,9 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _Name;
     [SerializeField] private GameObject _ListOfCharacters;
     private Image[] _Image = new Image[6];
-    [SerializeField] private GameObject _ChoiceBox;
-    private DialogueTrigger[] _ChoiceTrigger = new DialogueTrigger[3];
     [SerializeField] private Button _ContinueBtn; 
     [SerializeField] private GameObject _ChoicesBox;
+    private DialogueTrigger[] _ChoiceTrigger = new DialogueTrigger[3];
 
     [SerializeField] private EventManager _xEventManager;
 
@@ -38,7 +37,7 @@ public class DialogueUIManager : MonoBehaviour
         }
         for(int i = 0; i < _ChoiceTrigger.Length; i++)
         {
-            _ChoiceTrigger[i] = _ChoiceBox.transform.GetChild(i).gameObject.GetComponent<DialogueTrigger>();
+            _ChoiceTrigger[i] = _ChoicesBox.transform.GetChild(i).gameObject.GetComponent<DialogueTrigger>();
         }
     }
 
@@ -70,9 +69,12 @@ public class DialogueUIManager : MonoBehaviour
 
     private void FillChoiceBox(object[] param)
     {
+        List<DialogueSO[]> list = (List<DialogueSO[]>)param[0];
+        DialogueSO[] dialogues = list[0];
+        
         for(int i = 0; i < _ChoiceTrigger.Length; i++)
         {
-            //_ChoiceTrigger[i].XDialogues
+            _ChoiceTrigger[i].XDefaultDialogue = dialogues[i];
         }
     }
     
@@ -101,6 +103,7 @@ public class DialogueUIManager : MonoBehaviour
 
     private void ShowChoices(object[] param)
     {
+        FillChoiceBox(param);
         _ChoicesBox.SetActive(true);
     }
 
