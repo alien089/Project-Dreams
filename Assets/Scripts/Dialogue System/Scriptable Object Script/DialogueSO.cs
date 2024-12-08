@@ -12,33 +12,49 @@ public class DialogueSO : ScriptableObject
 {
     public Dialogue Dialogue;
     public bool hasChoices = false;
-    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceA;
-    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceB;
-    [ConditionalHide("hasChoices")]public DialogueSO dialogueChoiceC;
 
+    [ConditionalHide("hasChoices")] public string TextDialogueChoiceA;
+    [ConditionalHide("hasChoices")] public DialogueSO DialogueChoiceA;
+    [ConditionalHide("hasChoices")] public string TextDialogueChoiceB;
+    [ConditionalHide("hasChoices")] public DialogueSO DialogueChoiceB;
+    [ConditionalHide("hasChoices")] public string TextDialogueChoiceC;
+    [ConditionalHide("hasChoices")] public DialogueSO DialogueChoiceC;
+
+    /// <summary>
+    /// Ensures that data in the Dialogue object remains consistent and initializes necessary fields.
+    /// </summary>
     private void OnValidate()
     {
+        // Ensure the Dialogue contains parts; initialize if empty.
         if (Dialogue.DialogueParts.Count == 0) TextElabrotation();
-        
+
+        // Sync choices with the Dialogue object.
         Dialogue.HasChoices = hasChoices;
 
-        Dialogue.DialogueChoices[0] = dialogueChoiceA;
-        Dialogue.DialogueChoices[1] = dialogueChoiceB;
-        Dialogue.DialogueChoices[2] = dialogueChoiceC;
-        
-        for (int i = 0; i < Dialogue.DialogueParts.Count; i++)
+        Dialogue.LabelsDialogueChoices[0] = TextDialogueChoiceA;
+        Dialogue.DialogueChoices[0] = DialogueChoiceA;
+        Dialogue.LabelsDialogueChoices[1] = TextDialogueChoiceB;
+        Dialogue.DialogueChoices[1] = DialogueChoiceB;
+        Dialogue.LabelsDialogueChoices[2] = TextDialogueChoiceC;
+        Dialogue.DialogueChoices[2] = DialogueChoiceC;
+
+        // Ensure that each Sentence's `_sImage` array has exactly 6 elements.
+        foreach (var part in Dialogue.DialogueParts)
         {
-            for(int j = 0; j < Dialogue.DialogueParts[i].Sentences.Count; j++)
+            foreach (var sentence in part.Sentences)
             {
-                if (Dialogue.DialogueParts[i].Sentences[j].SImage.Length != 6)
+                if (sentence.SImage.Length != 6)
                 {
                     Debug.LogWarning("Don't change the 'ints' field's array size!");
-                    Array.Resize(ref Dialogue.DialogueParts[i].Sentences[j]._sImage, 6);
+                    Array.Resize(ref sentence._sImage, 6);
                 }
             }
         }
     }
 
+    /// <summary>
+    /// Converts text from a CSV file into Dialogue data.
+    /// </summary>
     private void TextElabrotation()
     {
         if (Dialogue.DialogueCSV == null) return;
@@ -48,11 +64,18 @@ public class DialogueSO : ScriptableObject
 
         List<Line> ListLines;
 
+        // Parse the CSV file into a list of lines.
         PrepareListLine(out ListLines, lines);
 
+        // Create Dialogue objects from the parsed lines.
         CreateDialogue(ListLines);
     }
 
+    /// <summary>
+    /// Parses lines from the CSV file into structured data.
+    /// </summary>
+    /// <param name="ListLines">Output list of parsed lines.</param>
+    /// <param name="lines">Array of CSV file lines.</param>
     private void PrepareListLine(out List<Line> ListLines, string[] lines)
     {
         ListLines = new List<Line>();
@@ -63,7 +86,7 @@ public class DialogueSO : ScriptableObject
 
             if (parts.Length != 9)
             {
-                Debug.LogError("Numer of fields incorrect at line: " + i);
+                Debug.LogError("Number of fields incorrect at line: " + i);
                 return;
             }
 
@@ -84,13 +107,16 @@ public class DialogueSO : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Converts parsed lines into Dialogue objects.
+    /// </summary>
+    /// <param name="ListLines">List of parsed lines.</param>
     private void CreateDialogue(List<Line> ListLines)
     {
         for (int i = 0; i < ListLines.Count; i++)
         {
             string name = ListLines[i].PGName;
-            int j = i;
-            j++;
+            int j = i + 1;
             List<Sentence> strSentences = new List<Sentence>();
 
             Sentence strSentence = new Sentence(ListLines[i].Sentence, TextToSprite(ListLines[i].PG));
@@ -111,6 +137,11 @@ public class DialogueSO : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Converts sprite references in text form to Sprite objects.
+    /// </summary>
+    /// <param name="strSprite">Array of sprite paths as strings.</param>
+    /// <returns>Array of Sprite objects.</returns>
     private Sprite[] TextToSprite(string[] strSprite)
     {
         Sprite[] xSprite = new Sprite[6];
@@ -121,20 +152,25 @@ public class DialogueSO : ScriptableObject
 
             string strSpritePath = "2D/Character Sprites/";
 
-            string[] strSpriteParts = strSprite[i].Split('-'); //separa stringa sprite in nome + emozione
-            strSpritePath += strSpriteParts[0]; //prendo solo nome
+            string[] strSpriteParts = strSprite[i].Split('-'); // Split sprite string into name and emotion.
+            strSpritePath += strSpriteParts[0]; // Get name only.
 
-            strSpritePath += "/S_"; //prepara nome file
+            strSpritePath += "/S_"; // Prepare file name.
             strSpritePath += strSprite[i];
 
-
-            Sprite sprite = Resources.Load<Sprite>(strSpritePath);  //load chiede /.../nome file
+            // Load sprite from the Resources folder.
+            Sprite sprite = Resources.Load<Sprite>(strSpritePath);
 
             xSprite[i] = sprite;
         }
         return xSprite;
     }
 
+    // Supporting structs and enums
+
+    /// <summary>
+    /// Represents a line parsed from the CSV file.
+    /// </summary>
     private struct Line
     {
         public string Audio;
@@ -143,6 +179,9 @@ public class DialogueSO : ScriptableObject
         public string Sentence;
     }
 
+    /// <summary>
+    /// Enum for indexing fields in the CSV file.
+    /// </summary>
     private enum Field
     {
         Audio,

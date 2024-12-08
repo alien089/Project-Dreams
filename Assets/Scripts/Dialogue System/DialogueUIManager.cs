@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueUIManager : MonoBehaviour
 {
+    // Serialized fields for UI components
     [SerializeField] private GameObject _MenuBackground;
     [SerializeField] private TextMeshProUGUI _Sentence;
     [SerializeField] private Image _TextBox;
@@ -16,12 +17,12 @@ public class DialogueUIManager : MonoBehaviour
     [SerializeField] private Button _ContinueBtn; 
     [SerializeField] private GameObject _ChoicesBox;
     private DialogueTrigger[] _ChoiceTrigger = new DialogueTrigger[3];
-
     [SerializeField] private EventManager _xEventManager;
 
-    // Start is called before the first frame update
+    // Initialization and event registration
     void Start()
     {
+        // Registering functions to EventManager
         _xEventManager.Register("CHANGE_SENTENCE", ChangeSentence);
         _xEventManager.Register("CHANGE_NAME", ChangeName);
         _xEventManager.Register("CHANGE_IMAGE", ChangeImage);
@@ -29,27 +30,44 @@ public class DialogueUIManager : MonoBehaviour
         _xEventManager.Register("START_DIALOGUE", ShowDialogue);
         _xEventManager.Register("START_CHOICE", ShowChoices);
 
+        // Initial UI state: hidden
         HideDialogue(null);
 
-        for(int i = 0; i < _Image.Length; i++)
+        // Populate _Image array with character portraits
+        for (int i = 0; i < _Image.Length; i++)
         {
             _Image[i] = _ListOfCharacters.transform.GetChild(i).gameObject.GetComponent<Image>();
         }
-        for(int i = 0; i < _ChoiceTrigger.Length; i++)
+
+        // Populate _ChoiceTrigger array with choice buttons
+        for (int i = 0; i < _ChoiceTrigger.Length; i++)
         {
             _ChoiceTrigger[i] = _ChoicesBox.transform.GetChild(i).gameObject.GetComponent<DialogueTrigger>();
         }
     }
 
+    /// <summary>
+    /// Changes the dialogue sentence displayed in the UI.
+    /// </summary>
+    /// <param name="param">Array where the first element is the sentence (string).</param>
     public void ChangeSentence(object[] param)
     {
         _Sentence.text = (string)param[0];
     }
+
+    /// <summary>
+    /// Updates the character name displayed in the UI.
+    /// </summary>
+    /// <param name="param">Array where the first element is the name (string).</param>
     public void ChangeName(object[] param)
     {
         _Name.text = (string)param[0];
     }
-    
+
+    /// <summary>
+    /// Updates character images shown in the UI based on a list of sprites.
+    /// </summary>
+    /// <param name="param">Array where the first element is a list of Sprite arrays.</param>
     public void ChangeImage(object[] param)
     {
         List<Sprite[]> list = (List<Sprite[]>)param[0];
@@ -67,17 +85,28 @@ public class DialogueUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fills the choice box with options and their corresponding dialogues.
+    /// </summary>
+    /// <param name="param">Array containing dialogues and their labels.</param>
     private void FillChoiceBox(object[] param)
     {
-        List<DialogueSO[]> list = (List<DialogueSO[]>)param[0];
-        DialogueSO[] dialogues = list[0];
+        List<DialogueSO[]> listDialogues = (List<DialogueSO[]>)param[0];
+        DialogueSO[] dialogues = listDialogues[0];
+        List<string[]> listLabels = (List<string[]>)param[1];
+        string[] labels = listLabels[0];
         
-        for(int i = 0; i < _ChoiceTrigger.Length; i++)
+        for (int i = 0; i < _ChoiceTrigger.Length; i++)
         {
             _ChoiceTrigger[i].XDefaultDialogue = dialogues[i];
+            _ChoicesBox.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = labels[i];
         }
     }
     
+    /// <summary>
+    /// Hides all dialogue-related UI elements.
+    /// </summary>
+    /// <param name="param">Optional parameter (not used).</param>
     private void HideDialogue(object[] param)
     {
         _ContinueBtn.gameObject.SetActive(false);
@@ -88,8 +117,12 @@ public class DialogueUIManager : MonoBehaviour
         _Name.text = "";
         _ListOfCharacters.gameObject.SetActive(false);
         _ChoicesBox.SetActive(false);
-    }    
-    
+    }
+
+    /// <summary>
+    /// Displays all dialogue-related UI elements.
+    /// </summary>
+    /// <param name="param">Optional parameter (not used).</param>
     private void ShowDialogue(object[] param)
     {
         _ContinueBtn.gameObject.SetActive(true);
@@ -101,17 +134,19 @@ public class DialogueUIManager : MonoBehaviour
         _ListOfCharacters.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Displays the choice box and fills it with options.
+    /// </summary>
+    /// <param name="param">Array containing dialogues and their labels.</param>
     private void ShowChoices(object[] param)
     {
         FillChoiceBox(param);
         _ChoicesBox.SetActive(true);
     }
 
-    private void CreateCharacter(object[] param)
-    {
-        
-    }
-
+    /// <summary>
+    /// Hides the choice box UI element.
+    /// </summary>
     public void HideChoices()
     {
         _ChoicesBox.SetActive(false);
