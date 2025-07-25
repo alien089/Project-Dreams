@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using Misc;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogueElaborator : MonoBehaviour
 {
     private bool _bIsRunning = false;
-
-    [SerializeField] private EventManager _xEventManager;
 
     private Dialogue _Dialogue;
     private List<string> _sCurrentText;
@@ -21,6 +20,8 @@ public class DialogueElaborator : MonoBehaviour
     {
         _sCurrentText = new List<string>();
         _xCurrentImage = new List<Sprite[]>();
+        
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.START_DIALOGUE_ELAB, StartDialogue);
     }
 
     /// <summary>
@@ -28,11 +29,14 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     /// <param name="dialogueList"></param>
     /// <param name="defaultDialogue"></param>
-    public void StartDialogue(List<Dialogue> dialogueList, Dialogue defaultDialogue)
+    public void StartDialogue(object[] param)
     {
+        List<Dialogue> dialogueList = (List<Dialogue>)param[0];
+        Dialogue defaultDialogue = (Dialogue)param[1];
+        
         if (!_bIsRunning)
         {
-            _xEventManager.TriggerEvent("START_DIALOGUE");
+            GameManager.Instance.XDialogueEventBus.TriggerEvent("START_DIALOGUE");
 
             _bIsRunning = true;
 
@@ -58,7 +62,7 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     public void StartMonologue()
     {
-        _xEventManager.TriggerEvent("CHANGE_NAME", _Dialogue.DialogueParts[_CurrentMonologueIndex].SName);
+        GameManager.Instance.XDialogueEventBus.TriggerEvent("CHANGE_NAME", _Dialogue.DialogueParts[_CurrentMonologueIndex].SName);
 
         ClearCurrent();
 
@@ -97,7 +101,7 @@ public class DialogueElaborator : MonoBehaviour
                     System.Collections.Generic.List<string[]> listLabels = new List<string[]>();
                     listLabels.Add(_Dialogue.LabelsDialogueChoices);
                     EndDialogue();
-                    _xEventManager.TriggerEvent("START_CHOICE", listDialogues, listLabels);
+                    GameManager.Instance.XDialogueEventBus.TriggerEvent("START_CHOICE", listDialogues, listLabels);
                 }
                 else
                 {
@@ -123,9 +127,9 @@ public class DialogueElaborator : MonoBehaviour
         List<Sprite[]> list = new List<Sprite[]>();
         list.Add(image);
 
-        _xEventManager.TriggerEvent("CHANGE_SENTENCE", "");
-        _xEventManager.TriggerEvent("CHANGE_SENTENCE", sentence);
-        _xEventManager.TriggerEvent("CHANGE_IMAGE", list);
+        GameManager.Instance.XDialogueEventBus.TriggerEvent("CHANGE_SENTENCE", "");
+        GameManager.Instance.XDialogueEventBus.TriggerEvent("CHANGE_SENTENCE", sentence);
+        GameManager.Instance.XDialogueEventBus.TriggerEvent("CHANGE_IMAGE", list);
     }
 
     /// <summary>
@@ -138,7 +142,7 @@ public class DialogueElaborator : MonoBehaviour
         _CurrentMonologueIndex = 0;
         _Dialogue = null;
 
-        _xEventManager.TriggerEvent("END_DIALOGUE");
+        GameManager.Instance.XDialogueEventBus.TriggerEvent("END_DIALOGUE");
 
 
         _bIsRunning = false;

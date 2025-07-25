@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Misc;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,19 +17,19 @@ public class DialogueUIManager : MonoBehaviour
     private Image[] _Image = new Image[6];
     [SerializeField] private Button _ContinueBtn; 
     [SerializeField] private GameObject _ChoicesBox;
-    private DialogueTrigger[] _ChoiceTrigger = new DialogueTrigger[3];
-    [SerializeField] private EventManager _xEventManager;
+    [SerializeField] private GameObject _ChoicePrefab;
 
     // Initialization and event registration
     void Start()
     {
         // Registering functions to EventManager
-        _xEventManager.Register("CHANGE_SENTENCE", ChangeSentence);
-        _xEventManager.Register("CHANGE_NAME", ChangeName);
-        _xEventManager.Register("CHANGE_IMAGE", ChangeImage);
-        _xEventManager.Register("END_DIALOGUE", HideDialogue);
-        _xEventManager.Register("START_DIALOGUE", ShowDialogue);
-        _xEventManager.Register("START_CHOICE", ShowChoices);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.CHANGE_SENTENCE, ChangeSentence);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.CHANGE_NAME, ChangeName);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.CHANGE_IMAGE, ChangeImage);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.END_DIALOGUE, HideDialogue);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.START_DIALOGUE, ShowDialogue);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.START_CHOICE, ShowChoices);
+        GameManager.Instance.XDialogueEventBus.Register(DialogueEventList.HIDE_CHOICE, HideChoices);
 
         // Initial UI state: hidden
         HideDialogue(null);
@@ -37,12 +38,6 @@ public class DialogueUIManager : MonoBehaviour
         for (int i = 0; i < _Image.Length; i++)
         {
             _Image[i] = _ListOfCharacters.transform.GetChild(i).gameObject.GetComponent<Image>();
-        }
-
-        // Populate _ChoiceTrigger array with choice buttons
-        for (int i = 0; i < _ChoiceTrigger.Length; i++)
-        {
-            _ChoiceTrigger[i] = _ChoicesBox.transform.GetChild(i).gameObject.GetComponent<DialogueTrigger>();
         }
     }
 
@@ -96,10 +91,11 @@ public class DialogueUIManager : MonoBehaviour
         List<string[]> listLabels = (List<string[]>)param[1];
         string[] labels = listLabels[0];
         
-        for (int i = 0; i < _ChoiceTrigger.Length; i++)
+        for (int i = 0; i < dialogues.Length; i++)
         {
-            _ChoiceTrigger[i].XDefaultDialogue = dialogues[i];
-            _ChoicesBox.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = labels[i];
+            GameObject tmp = Instantiate(_ChoicePrefab, _ChoicesBox.transform);
+            tmp.GetComponent<DialogueTrigger>().XDefaultDialogue = dialogues[i];
+            tmp.GetComponentInChildren<TMP_Text>().text = labels[i];
         }
     }
     
@@ -147,8 +143,13 @@ public class DialogueUIManager : MonoBehaviour
     /// <summary>
     /// Hides the choice box UI element.
     /// </summary>
-    public void HideChoices()
+    public void HideChoices(object[] param)
     {
         _ChoicesBox.SetActive(false);
+
+        for (int i = 0; i < _ChoicesBox.transform.childCount; i++)
+        {
+            Destroy(_ChoicesBox.transform.GetChild(i).gameObject);
+        }
     }
 }
