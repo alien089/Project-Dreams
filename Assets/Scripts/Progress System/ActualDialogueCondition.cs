@@ -4,7 +4,6 @@ namespace Progress_System
 {
     public class ActualDialogueCondition : ScriptableObject
     {
-        public Condition conditions;
+        public Condition MConditions;
     }
 }
-

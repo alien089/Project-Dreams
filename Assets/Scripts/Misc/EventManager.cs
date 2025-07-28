@@ -5,7 +5,7 @@ namespace Misc
 {
     public class EventManager
     {
-        private Dictionary<string, List<Action<object[]>>> _EventMap = new Dictionary<string, List<Action<object[]>>>();
+        private Dictionary<string, List<Action<object[]>>> _mEventMap = new Dictionary<string, List<Action<object[]>>>();
 
         /// <summary>
         /// Registra una nuova azione per un evento specifico. Restituisce null se uno dei parametri � incorretto.
@@ -17,12 +17,12 @@ namespace Misc
             if (!CheckPrecondition(eventName, action))
                 return;
 
-            if (_EventMap.ContainsKey(eventName))
-                _EventMap[eventName].Add(action);
+            if (_mEventMap.ContainsKey(eventName))
+                _mEventMap[eventName].Add(action);
             else
             {
-                _EventMap.Add(eventName, new List<Action<object[]>>());
-                _EventMap[eventName].Add(action);
+                _mEventMap.Add(eventName, new List<Action<object[]>>());
+                _mEventMap[eventName].Add(action);
             }
         }
 
@@ -36,8 +36,8 @@ namespace Misc
             if (!CheckPrecondition(eventName, action))
                 return;
 
-            if (_EventMap.ContainsKey(eventName))
-                _EventMap[eventName].Remove(action);
+            if (_mEventMap.ContainsKey(eventName))
+                _mEventMap[eventName].Remove(action);
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace Misc
         /// <param name="parameters">Parametri da passare agli action</param>
         public void TriggerEvent(string eventName, params object[] parameters)
         {
-            if (_EventMap.ContainsKey(eventName))
+            if (_mEventMap.ContainsKey(eventName))
             {
-                List<Action<object[]>> actions = _EventMap[eventName];
+                List<Action<object[]>> actions = _mEventMap[eventName];
 
                 foreach (Action<object[]> action in actions)
                     action.Invoke(parameters);

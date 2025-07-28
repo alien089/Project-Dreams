@@ -9,7 +9,7 @@ namespace Progress_System
     public static class ConditionsUtils
     {
         /// <summary>
-        /// Checker for the preconditions, if is satisfied will be used the actual dialogue, else the default
+        /// Checker for the given conditions
         /// </summary>
         /// <param name="xDialogue"></param>
         /// <returns></returns>
@@ -24,7 +24,7 @@ namespace Progress_System
 
             foreach (KeyValuePair<Conditions, int> pair in condition)
             {
-                if (actualConditions[0].conditions.TryGetValue(pair.Key, out int value))
+                if (actualConditions[0].MConditions.TryGetValue(pair.Key, out int value))
                 {
                     if (value == pair.Value)
                     {
@@ -53,7 +53,7 @@ namespace Progress_System
         }
         
         /// <summary>
-        /// Method for application of the dialogue's postconditions in the actual player's condition list
+        /// Method for application of the given conditions in the actual player's condition list
         /// </summary>
         public static void ApplyCondition(Condition condition)
         {
@@ -62,10 +62,10 @@ namespace Progress_System
 
             foreach (KeyValuePair<Conditions, int> pair in condition)
             {
-                if (actualConditions[0].conditions.ContainsKey(pair.Key)) 
-                    actualConditions[0].conditions[pair.Key] = pair.Value;
+                if (actualConditions[0].MConditions.ContainsKey(pair.Key))
+                    actualConditions[0].MConditions[pair.Key] = pair.Value;
                 else
-                    actualConditions[0].conditions.Add(pair.Key, pair.Value);
+                    actualConditions[0].MConditions.Add(pair.Key, pair.Value);
             }
         }
     }
