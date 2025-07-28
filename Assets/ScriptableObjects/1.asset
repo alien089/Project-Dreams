@@ -54,8 +54,8 @@ MonoBehaviour:
       _values: 0300000001000000
   hasChoices: 1
   TextDialogueChoiceA: pippo
-  DialogueChoiceA: {fileID: 0}
+  DialogueChoiceA: {fileID: 11400000}
   TextDialogueChoiceB: pluto
-  DialogueChoiceB: {fileID: 0}
+  DialogueChoiceB: {fileID: 11400000, guid: dd049444e7e76a54d9e713c3394748d0, type: 2}
   TextDialogueChoiceC: paperino
-  DialogueChoiceC: {fileID: 0}
+  DialogueChoiceC: {fileID: 11400000, guid: 88564a6c0dd990847930475ff382866e, type: 2}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using Misc;
+using Progress_System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ public class DialogueElaborator : MonoBehaviour
             //checking which dialogue from the list is the one who respects the preconditions
             for(int i = 0; i < dialogueList.Count; i++)
             {
-                if (CheckPreconditions(dialogueList[i]))
+                if (ConditionsUtils.CheckConditions(dialogueList[i].PreConditions))
                 {
                     _Dialogue = dialogueList[i];
                     break;
@@ -137,7 +138,7 @@ public class DialogueElaborator : MonoBehaviour
     /// </summary>
     private void EndDialogue()
     {
-        ApplyPostCondition();
+        ConditionsUtils.ApplyCondition(_Dialogue.PostConditions);
 
         _CurrentMonologueIndex = 0;
         _Dialogue = null;
@@ -146,67 +147,6 @@ public class DialogueElaborator : MonoBehaviour
 
 
         _bIsRunning = false;
-    }
-
-    /// <summary>
-    /// Method for application of the dialogue's postconditions in the actual player's condition list
-    /// </summary>
-    private void ApplyPostCondition()
-    {
-        //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
-        ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
-
-        foreach (KeyValuePair<Conditions, int> pair in _Dialogue.PostConditions)
-        {
-            if (actualConditions[0].conditions.ContainsKey(pair.Key)) 
-                actualConditions[0].conditions[pair.Key] = pair.Value;
-            else
-                actualConditions[0].conditions.Add(pair.Key, pair.Value);
-        }
-    }
-
-    /// <summary>
-    /// Checker for the preconditions, if is satisfied will be used the actual dialogue, else the default
-    /// </summary>
-    /// <param name="xDialogue"></param>
-    /// <returns></returns>
-    private bool CheckPreconditions(Dialogue xDialogue)
-    {
-        bool check = true;
-
-        bool[] preconditionsCheck = new bool[xDialogue.PreConditions.Count];
-
-        //obtain the scriptable object named "ActualDialogueConditions" in Resources folder that contain the player knowing
-        ActualDialogueCondition[] actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse");
-
-        foreach (KeyValuePair<Conditions, int> pair in xDialogue.PreConditions)
-        {
-            if (actualConditions[0].conditions.TryGetValue(pair.Key, out int value))
-            {
-                if (value == pair.Value)
-                {
-                    for (int i = 0; i < preconditionsCheck.Length; i++)
-                    {
-                        if (preconditionsCheck[i] == false)
-                        {
-                            preconditionsCheck[i] = true;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        for (int i = 0; i < preconditionsCheck.Length; i++)
-        {
-            if (preconditionsCheck[i] == false)
-            {
-                check = false;
-                break;
-            }
-        }
-
-        return check;
     }
 
     #region current

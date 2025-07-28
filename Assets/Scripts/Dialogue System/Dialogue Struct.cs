@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Misc;
+using Progress_System;
 using UnityEngine;
-
-[System.Serializable()]
-public class Condition : SerializableDictionaryBase<Conditions, int> { }
-
 
 [System.Serializable]
 public class Dialogue
