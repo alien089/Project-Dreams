@@ -1,0 +1,18 @@
+ _Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _Bakoné_Now that we have the time, Mister Gaston, would you like to give me an explanation for your presence at the Temple the day the Pillow went missing?
+ _Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _Kerith_Is… Is that true, Gaston? You went to see Uldon the day of the theft?
+ _Medico-Neutro_Riccone-Neutro_ _ _Protagonista-Neutro_ _Gaston_Now, now. My dear friend, don't tell me you are suspecting me as well.
+ _Medico-Neutro_Riccone-Neutro_ _ _Protagonista-Neutro_ _ _And first of all, how would you even know that? The old man died two days ago, how are you bringing this up right now?
+ _Medico-Neutro_Riccone-Neutro_ _ _Protagonista-Neutro_ _Bakoné_We found out that a magic device keeps track of every single person that passes through the entrance gate. You were one of them, so I was wondering if you would like to add anything on the matter?
+ _Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _Kerith_I'm sure there was some kind of mistake, Mister detective! Gaston is my friend, and I'm sure he was not the only one going to the Temple that day, right?
+ _Medico-Neutro_Riccone-Felice_ _ _Protagonista-Neutro_ _ _I mean, I went there myself! And I'm sure we were not the only ones, so why are you…
+ _Medico-Neutro_Riccone-Felice_ _Protagonista-Neutro_ _ _Bakoné_Of course, but Gaston is the only one who has no alibi for the moment the Pillow went missing.
+ _Medico-Neutro_Riccone-Neutro_ _Protagonista-Neutro_ _ _ _And as far as I know, he has no alibi for the homicide either.
+ _Medico-Neutro_ _Riccone-Neutro_Protagonista-Neutro_ _ _Gaston_Huh? Is this some kind of sick joke?!
+ _Medico-Neutro_ _Riccone-Neutro_Protagonista-Neutro_ _ _ _I don't care why you decided to pick on me today, but I won't let you make fun of this situation.
+ _Medico-Neutro_ _Riccone-Neutro_Protagonista-Neutro_ _ _ _My friend Kerith lost a close friend, today. It was a tragic accident, and you should have some respect!
+ _Medico-Neutro_ _Riccone-Neutro_Protagonista-Neutro_ _ _Bakoné_It was no accident. Uldon was murdered.
+ _ _Medico-Neutro_Riccone-Neutro_Protagonista-Neutro_ _ _Kerith_Wait. Are you… Completely sure about that…?! Uldon was murdered?! Do you have any proof of what…
+ _ _Medico-Neutro_Riccone-Neutro_Protagonista-Neutro_ _ _Bakoné_I'm afraid this is exactly what happened, my boy. I found a little figurine of the Goddess covered in blood near the scene of the crime.
+ _Medico-Neutro_Riccone-Neutro_ _Protagonista-Neutro_ _ _Gaston_How are you so sure it was Uldon's blood?
+ _Medico-Neutro_Riccone-Neutro_ _Protagonista-Neutro_ _ _Bakoné_There are no other traces of blood around the house, and when I found the figurine the blood was still fresh.
+ _Medico-Neutro_Riccone-Neutro_ _Protagonista-Neutro_ _ _ _Although there is no definitive proof, I would say it's safe to assume that the figurine was the murder weapon.

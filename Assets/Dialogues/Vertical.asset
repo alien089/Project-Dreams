@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303b5f35688ab40459c560b5d4b34fd3, type: 3}
+  m_Name: Vertical
+  m_EditorClassIdentifier: 
+  Dialogue:
+    _PreConditions:
+      _keys: 
+      _values: 
+    _DialogueCSV: {fileID: 4900000, guid: 50d3a13a81feb6b46b9065d7e46e9dbd, type: 3}
+    _DialogueParts:
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "Now that we have the time, Mister Gaston, would you like to
+          give me an explanation for your presence at the Temple the day the Pillow
+          went missing?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+    - _sName: Kerith
+      _Sentences:
+      - _sSentence: "Is\u2026 Is that true, Gaston? You went to see Uldon the day
+          of the theft?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+    - _sName: Gaston
+      _Sentences:
+      - _sSentence: "Now, now. My dear friend, don't tell me you are suspecting me
+          as well.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+      - _sSentence: "And first of all, how would you even know that? The old man
+          died two days ago, how are you bringing this up right now?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "We found out that a magic device keeps track of every single
+          person that passes through the entrance gate. You were one of them, so
+          I was wondering if you would like to add anything on the matter?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+    - _sName: Kerith
+      _Sentences:
+      - _sSentence: "I'm sure there was some kind of mistake, Mister detective! Gaston
+          is my friend, and I'm sure he was not the only one going to the Temple
+          that day, right?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+      - _sSentence: "I mean, I went there myself! And I'm sure we were not the only
+          ones, so why are you\u2026\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "Of course, but Gaston is the only one who has no alibi for the
+          moment the Pillow went missing.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: bfb3601a956300f45857e48a6d34a86c, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+      - _sSentence: "And as far as I know, he has no alibi for the homicide either.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: Gaston
+      _Sentences:
+      - _sSentence: "Huh? Is this some kind of sick joke?!\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+      - _sSentence: "I don't care why you decided to pick on me today, but I won't
+          let you make fun of this situation.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+      - _sSentence: "My friend Kerith lost a close friend, today. It was a tragic
+          accident, and you should have some respect!\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "It was no accident. Uldon was murdered.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: Kerith
+      _Sentences:
+      - _sSentence: "Wait. Are you\u2026 Completely sure about that\u2026?! Uldon
+          was murdered?! Do you have any proof of what\u2026\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "I'm afraid this is exactly what happened, my boy. I found a
+          little figurine of the Goddess covered in blood near the scene of the crime.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: Gaston
+      _Sentences:
+      - _sSentence: "How are you so sure it was Uldon's blood?\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    - _sName: "Bakon\xE9"
+      _Sentences:
+      - _sSentence: "There are no other traces of blood around the house, and when
+          I found the figurine the blood was still fresh.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+      - _sSentence: "Although there is no definitive proof, I would say it's safe
+          to assume that the figurine was the murder weapon.\r"
+        _sAudio: {fileID: 0}
+        _sImage:
+        - {fileID: 21300000, guid: 02048776fa63b4d49ac0168dc55504ce, type: 3}
+        - {fileID: 21300000, guid: 58ac3473a28e68e469970547ddcdee47, type: 3}
+        - {fileID: 0}
+        - {fileID: 21300000, guid: 468c0bb6083e97e44ae40545bbe0dce5, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+    _PostConditions:
+      _keys: 
+      _values: 
+  hasChoices: 1
+  TextDialogueChoiceA: Testo lungyhissimo giusto per fare una prova
+  DialogueChoiceA: {fileID: 11400000, guid: 8510c4506c5eb6e4cb0717e6ad368d19, type: 2}
+  TextDialogueChoiceB: Scelta 2
+  DialogueChoiceB: {fileID: 11400000, guid: 935e01ac0c5a4744e85c49ac07592830, type: 2}
+  TextDialogueChoiceC: Scelta 3
+  DialogueChoiceC: {fileID: 11400000, guid: 3f4262ad9e9ee1f4bbb97987c2e381cb, type: 2}
