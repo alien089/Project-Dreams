@@ -42,4 +42,23 @@
         /// </summary>
         public const string HIDE_CHOICE = "HIDE_CHOICE";
     }
+
+    public static class InteractEventList
+    {
+        /// <summary>
+        /// params type: IObjectInteractable
+        /// </summary>
+        public const string CHECK_PRE_CONDITION = "CHECK_PRE_CONDITION";
+
+        /// <summary>
+        /// params type: none
+        /// </summary>
+        public const string REFRESH_INTERACTABLE_PRE_CONDITION = "REFRESH_INTERACTABLE_PRE_CONDITION";
+
+        /// <summary>
+        /// params type: Condition 
+        /// </summary>
+        public const string ADD_ITEM = "ADD_ITEM";
+
+    }
 }
