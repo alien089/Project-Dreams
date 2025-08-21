@@ -56,9 +56,9 @@
         public const string REFRESH_INTERACTABLE_PRE_CONDITION = "REFRESH_INTERACTABLE_PRE_CONDITION";
 
         /// <summary>
-        /// params type: Condition 
+        /// params type: none
         /// </summary>
-        public const string ADD_ITEM = "ADD_ITEM";
+        public const string ON_CONDITION_CHANGE = "ON_CONDITION_CHANGE";
 
     }
 }
