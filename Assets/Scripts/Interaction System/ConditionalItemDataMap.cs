@@ -2,7 +2,7 @@ using UnityEngine.UI;
 
 namespace InteractionSystem
 {
-    public class ConditionalObjectDataMap : SerializableDictionaryBase<int, ObjectModel> { }
+    public class ConditionalItemDataMap : SerializableDictionaryBase<int, ObjectModel> { }
 
     [System.Serializable]
     public struct ObjectModel

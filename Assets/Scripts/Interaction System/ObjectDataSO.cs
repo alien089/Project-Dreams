@@ -9,6 +9,6 @@ namespace InteractionSystem
     {
         public Conditions xObjectCondition;
         public OBJECT_TYPE xObjectType;
-        public ConditionalObjectDataMap xObjectConditonalData;
+        public ConditionalItemDataMap xObjectConditonalData;
     }
 }
