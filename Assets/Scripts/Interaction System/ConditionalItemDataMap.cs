@@ -1,15 +1,26 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace InteractionSystem
 {
-    public class ConditionalItemDataMap : SerializableDictionaryBase<int, ObjectModel> { }
+    [System.Serializable()]
+    public class ConditionalItemDataMap : SerializableDictionaryBase<int, ItemModel> { }
+
 
     [System.Serializable]
-    public struct ObjectModel
+    public struct ItemModel
     {
         public string sName;
+        [TextArea]
         public string sDescription;
-        public Image xObjectIcon;
-        public Image xObjectImage;
+        public Sprite xObjectIcon;
+        public Sprite xObjectImage;
+    }
+
+    [System.Serializable]
+    public class Data
+    {
+        public int index;
+        public ItemModel itemModel;
     }
 }

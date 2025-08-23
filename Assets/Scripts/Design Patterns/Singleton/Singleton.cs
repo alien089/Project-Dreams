@@ -7,8 +7,7 @@ namespace Framework.Generics.Pattern.SingletonPattern
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         public static T Instance;
-        // Start is called before the first frame update
-        void Awake()
+        protected virtual void Awake()
         {
             if (Instance == null)
             {

@@ -7,15 +7,19 @@ namespace InteractionSystem
     {
         private void OnEnable()
         {
-            GameManager.Instance.XDialogueEventBus.Register(InteractEventList.ON_CONDITION_CHANGE, RefreshInteractables);
+            GameManager.Instance.XInteractableEventBus.Register(InteractEventList.ON_CONDITION_CHANGE, RefreshInteractables);
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.XDialogueEventBus.Unregister(InteractEventList.ON_CONDITION_CHANGE, RefreshInteractables);
+            GameManager.Instance.XInteractableEventBus.Unregister(InteractEventList.ON_CONDITION_CHANGE, RefreshInteractables);
         }
 
-        void RefreshInteractables(params object[] param) => GameManager.Instance.XDialogueEventBus.TriggerEvent(InteractEventList.REFRESH_INTERACTABLE_PRE_CONDITION);
+        void RefreshInteractables(params object[] param) 
+        {
+            GameManager.Instance.XInteractableEventBus.TriggerEvent(InteractEventList.REFRESH_INTERACTABLE_PRE_CONDITION);
+        }
+        
     }
 }
 

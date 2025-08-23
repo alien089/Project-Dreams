@@ -3,5 +3,6 @@
 
 namespace InteractionSystem
 {
-    public class ConditionItemMap : SerializableDictionaryBase<Conditions, ObjectDataSO> { }
+    [System.Serializable()]
+    public class ConditionItemMap : SerializableDictionaryBase<Conditions, ItemDataSO> { }
 }
