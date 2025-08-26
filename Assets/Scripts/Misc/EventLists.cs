@@ -60,5 +60,10 @@
         /// </summary>
         public const string ON_CONDITION_CHANGE = "ON_CONDITION_CHANGE";
 
+        /// <summary>
+        /// params type: List(ItemModel)
+        /// </summary>
+        public const string ON_DIARY_CHANGE = "ON_DIARY_CHANGE";
+
     }
 }
