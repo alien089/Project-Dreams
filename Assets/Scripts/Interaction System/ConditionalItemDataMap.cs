@@ -17,6 +17,20 @@ namespace InteractionSystem
         public Sprite xObjectImage;
     }
 
+    public class DiaryUiItemData
+    {
+        public Conditions XCondition;
+        public ItemModel XModel;
+        public OBJECT_TYPE xType;
+
+        public DiaryUiItemData(Conditions condition, ItemModel model, OBJECT_TYPE type)
+        {
+            this.XCondition = condition;
+            this.XModel = model;
+            this.xType = type;
+        }
+    }
+
     [System.Serializable]
     public class Data
     {

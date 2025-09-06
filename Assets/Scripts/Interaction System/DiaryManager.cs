@@ -25,7 +25,7 @@ namespace InteractionSystem
             // get the conditions the player has and then check if any of them are items and then change the diary UI
             ActualDialogueCondition actualConditions = Resources.LoadAll<ActualDialogueCondition>("DialogueSystemInternalUse")[0];
 
-            List<ItemModel> itemsChanged = new();
+            List<DiaryUiItemData> itemsChanged = new();
 
             foreach (KeyValuePair<Conditions, int> pair in actualConditions.MConditions)
             {
@@ -36,7 +36,7 @@ namespace InteractionSystem
                     return;
 
                 // add to the changed items
-                itemsChanged.Add(itemModel);
+                itemsChanged.Add(new(pair.Key,itemModel,itemData.xObjectType));
             }
 
                 // Change the diary UI:
