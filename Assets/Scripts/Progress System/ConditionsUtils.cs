@@ -20,8 +20,6 @@ namespace Progress_System
 
             bool[] preconditionsCheck = new bool[condition.Count];
 
-            Debug.Log("precondtion count = " + condition.Count);
-
             foreach (KeyValuePair<Conditions, int> pair in condition)
             {
                 if (!actualConditions[0].MConditions.TryGetValue(pair.Key, out int value))

@@ -19,14 +19,14 @@ namespace InteractionSystem
 
     public class DiaryUiItemData
     {
-        public Conditions XCondition;
-        public ItemModel XModel;
+        public Conditions xCondition;
+        public ItemModel xModel;
         public OBJECT_TYPE xType;
 
         public DiaryUiItemData(Conditions condition, ItemModel model, OBJECT_TYPE type)
         {
-            this.XCondition = condition;
-            this.XModel = model;
+            this.xCondition = condition;
+            this.xModel = model;
             this.xType = type;
         }
     }

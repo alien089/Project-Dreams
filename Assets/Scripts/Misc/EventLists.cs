@@ -65,5 +65,10 @@
         /// </summary>
         public const string ON_DIARY_CHANGE = "ON_DIARY_CHANGE";
 
+        /// <summary>
+        /// params type ItemSlot
+        /// </summary>
+        public const string ON_ITEMSLOT_PRESSED = "ON_ITEMSLOT_PRESSED";
+
     }
 }
