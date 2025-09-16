@@ -5,24 +5,14 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    // item slot Icon and name 
-    [HideInInspector] public Image xIcon;
-    [HideInInspector] public TextMeshProUGUI xName;
+    // item slot Icon, name and button
+    public Image xIcon;
+    public TextMeshProUGUI xName;
+    [SerializeField] private Button _xButton;
 
     // general item and description
     [HideInInspector] public Sprite xItemImage;
     [HideInInspector] public string sDescription;
-
-    private Button _xButton;
-
-    private void Awake()
-    {
-        xName = GetComponentInChildren<TextMeshProUGUI>();
-        _xButton = GetComponentInChildren<Button>();
-
-        xIcon = _xButton.gameObject.GetComponent<Image>();
-
-    }
 
     private void OnEnable()
     {
@@ -39,4 +29,6 @@ public class ItemSlot : MonoBehaviour
     {
         GameManager.Instance.XInteractableEventBus.TriggerEvent(InteractEventList.ON_ITEMSLOT_PRESSED, this);
     }
+
+
 }

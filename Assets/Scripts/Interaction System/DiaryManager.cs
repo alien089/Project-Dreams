@@ -10,9 +10,13 @@ namespace InteractionSystem
     {
         [SerializeField] private ConditionItemMap _xItemMap;
 
+#if UNITY_EDITOR
+        public ConditionItemMap map { get => _xItemMap; set => _xItemMap = value; }
+#endif
+
         private void OnEnable()
         {
-            GameManager.Instance.XInteractableEventBus.Register(InteractEventList.ON_CONDITION_CHANGE,OnItemListChanged);
+            GameManager.Instance.XInteractableEventBus.Register(InteractEventList.ON_CONDITION_CHANGE, OnItemListChanged);
         }
 
         private void OnDisable()
@@ -36,11 +40,11 @@ namespace InteractionSystem
                     return;
 
                 // add to the changed items
-                itemsChanged.Add(new(pair.Key,itemModel,itemData.xObjectType));
+                itemsChanged.Add(new(pair.Key, itemModel, itemData.xObjectType));
             }
 
-                // Change the diary UI:
-                GameManager.Instance.XInteractableEventBus.TriggerEvent(InteractEventList.ON_DIARY_CHANGE,itemsChanged);
+            // Change the diary UI:
+            GameManager.Instance.XInteractableEventBus.TriggerEvent(InteractEventList.ON_DIARY_CHANGE, itemsChanged);
         }
     }
 }

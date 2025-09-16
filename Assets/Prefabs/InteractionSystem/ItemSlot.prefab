@@ -210,8 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669400a5a0ac7c04a8ec56e3fbb6b546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xIcon: {fileID: 0}
-  xName: {fileID: 0}
+  xIcon: {fileID: 1358799834103403301}
+  xName: {fileID: 2489804029294475976}
+  _xButton: {fileID: 477009682634416452}
   xItemImage: {fileID: 0}
   sDescription: 
 --- !u!1 &7079878326932544232
